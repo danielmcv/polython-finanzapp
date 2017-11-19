@@ -9,6 +9,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../bower_components/iron-form/iron-form.html">
+
+<link rel="import" href="../bower_components/polymerfire/firebase-app-script.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-auth-script.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-database-script.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-app.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-auth.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-query.html">
+
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="my-view3">
@@ -21,19 +33,88 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     </style>
 
+
     <div class="card">
-      <div class="circle">3</div>
-      <h1>View Three</h1>
-      <p>Modus commodo minimum eum te, vero utinam assueverit per eu.</p>
-      <p>Ea duis bonorum nec, falli paulo aliquid ei eum.Has at minim mucius aliquam, est id tempor laoreet.Pro saepe pertinax ei, ad pri animal labores suscipiantur.</p>
-    </div>
+      <div class="circle">$</div>
+      <h1>Registrar gasto</h1>
+      <iron-form>
+       <form method="get" action="/form/handler">
+        <paper-input id="categoria" label="Categoria" value="[[categoria]]"></paper-input>
+        <paper-input id="descripcion" label="Descripcion"></paper-input>
+        <paper-input id="monto" label="Monto"type="number" placeholder="$"></paper-input>
+        <paper-input id="fecha"label="fecha" ></paper-input>
+        <center><paper-checkbox id="entrada" value="false">Entrada</paper-checkbox></center>
+        <br>
+        <center><paper-button raised  on-tap="save" id="submitButton" raised>Registrar</paper-button></center>
+      </form>
+     </iron-form>
+
+     <firebase-app
+       auth-domain="[[config.authDomain]]"
+       database-url="[[config.databaseURL]]"
+       api-key="[[config.apiKey]]">
+     </firebase-app>
+     <firebase-auth id="auth" user="{{user}}" provider="google" on-error="handleError">
+
+     <firebase-document id="doc"></firebase-document>
+     
+      <firebase-query
+        app-name="finanzaap"
+        path="finanzaap/Pays/"
+        data="{{articles}}"
+      ></firebase-query>
+
+      <template is="dom-repeat" items="[[articles]]" as="item">
+        data: [[item]]
+      </template>
+   </div>
+
+
+
   </template>
 
-  <script>
-    class MyView3 extends Polymer.Element {
-      static get is() { return 'my-view3'; }
-    }
 
-    window.customElements.define(MyView3.is, MyView3);
+  <script>
+  var config = {
+      apiKey: "AIzaSyCZbqNQgpw6vdgvnJxFnBo9Cvek0y8y-Ak",
+      authDomain: "finanzaap.firebaseapp.com",
+      databaseURL: "https://finanzaap.firebaseio.com",
+    };
+    Polymer({
+      is: 'my-view3',
+      properties: {
+        articles: Object,
+      },
+      save: function() {
+        var data = {
+          categoria:this.$.categoria.value,
+          descripcion:this.$.descripcion.value,
+          monto:this.$.monto.value,
+          fecha:this.$.fecha.value,
+          entrada:this.$.entrada.value
+        }
+        console.log(data);
+      },
+      properties: {
+      uid: String,
+      articles:{
+        type:Object,
+        observer:'dataChanged'
+      },
+      config: {
+        type: Object,
+        readOnly: true,
+        value: function() {
+          console.log(config);
+           return config; }
+      }
+    },
+
+    dataChanged: function (newData, oldData) {
+        console.log(newData);
+        console.log(oldData);
+      }
+
+    });
   </script>
 </dom-module>
