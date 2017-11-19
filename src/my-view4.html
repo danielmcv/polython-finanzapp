@@ -1,0 +1,134 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-item/paper-icon-item.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/iron-icons/maps-icons.html">
+<link rel="import" href="../bower_components/iron-label/iron-label.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="my-view4">
+  <template>
+    <style include="shared-styles">
+      :host {
+        display: block;
+
+        padding: 0px;
+      }
+      .card{
+        color: black;
+        align-content: flex-end;
+      }
+
+      p{
+        width: 500px;
+        padding: 5px 20px 5px 20px;
+      }
+      paper-button{
+        text-align: center;
+      }
+    </style>
+
+    <div class="card">
+      <div role="listbox">
+        <paper-icon-item>
+          <div class="avatar blue" slot="item-icon">
+            <iron-icon icon="maps:directions-bus"></iron-icon>
+          </div>
+          <paper-item-body two-line>
+            <div>Transporte</div>
+            <div secondary>Jan 9, 2014</div>
+          </paper-item-body>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+          <iron-label>
+           <paper-button>$1,500</paper-button>
+          </iron-label>
+        </paper-icon-item>
+        <paper-icon-item>
+          <div class="avatar blue" slot="item-icon">
+            <iron-icon icon="maps:directions-bus"></iron-icon>
+          </div>
+          <paper-item-body two-line>
+            <div>Comida</div>
+            <div secondary>Jan 9, 2014</div>
+          </paper-item-body>
+          <p>Lorem ipsum dolor sit amet, consectetur adip.</p>
+          <iron-label>
+           <paper-button>$300</paper-button>
+          </iron-label>
+        </paper-icon-item>
+        <paper-icon-item>
+          <div class="avatar blue" slot="item-icon">
+            <iron-icon icon="maps:directions-bus"></iron-icon>
+          </div>
+          <paper-item-body two-line>
+            <div>Entretenimiento</div>
+            <div secondary>Jan 9, 2014</div>
+          </paper-item-body>
+          <p>Lorem ipsum dolor sit amet, sed do eiusmod tempor incididunt.</p>
+          <iron-label>
+           <paper-button>$700</paper-button>
+          </iron-label>
+        </paper-icon-item>
+        <paper-icon-item>
+          <div class="avatar blue" slot="item-icon">
+            <iron-icon icon="maps:directions-bus"></iron-icon>
+          </div>
+          <paper-item-body two-line>
+            <div>Transporte</div>
+            <div secondary>Jan 9, 2014</div>
+          </paper-item-body>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+          <iron-label>
+           <paper-button>$1,500</paper-button>
+          </iron-label>
+        </paper-icon-item>
+        <paper-icon-item>
+          <div class="avatar blue" slot="item-icon">
+            <iron-icon icon="maps:directions-bus"></iron-icon>
+          </div>
+          <paper-item-body two-line>
+            <div>Transporte</div>
+            <div secondary>Jan 9, 2014</div>
+          </paper-item-body>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+          <iron-label>
+           <paper-button>$1,500</paper-button>
+          </iron-label>
+        </paper-icon-item>
+        <paper-icon-item>
+          <div class="avatar blue" slot="item-icon">
+            <iron-icon icon="maps:directions-bus"></iron-icon>
+          </div>
+          <paper-item-body two-line>
+            <div>Transporte</div>
+            <div secondary>Jan 9, 2014</div>
+          </paper-item-body>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt.</p>
+          <iron-label>
+           <paper-button>$1,500</paper-button>
+          </iron-label>
+        </paper-icon-item>
+
+      </div>
+    </div>
+  </template>
+
+  <script>
+    class MyView4 extends Polymer.Element {
+      static get is() { return 'my-view4'; }
+    }
+
+    window.customElements.define(MyView4.is, MyView4);
+  </script>
+</dom-module>
