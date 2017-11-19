@@ -9,6 +9,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/google-chart/google-chart.html">
+
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="my-view1">
@@ -19,13 +21,40 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
         padding: 10px;
       }
+      google-chart {
+        height: 500px;
+        width: 50em;
+      }
+      .card{
+        text-align: center;
+        background-color: #FF5252;
+        color: white;
+        font-weight: 100;
+      }
+      .card h1{
+        color: white;
+        font-weight: 200;
+      }
+      .card p {
+        font-weight: 100;
+      }
     </style>
 
+    <center>
+       <google-chart
+        type='column'
+        options='{"title": "Noviembre"}'
+        cols='[{"label":"Month", "type":"string"}, {"label":"Gastos", "type":"number"}]'
+        rows='[["Comida", 700],["Transporte", 300],["Entretenimiento", 350],["Estudios", 500], ["Ropa", 700]]'>
+      </google-chart>
+  </center>
+
     <div class="card">
-      <div class="circle">1</div>
-      <h1>Hola Mundo</h1>
-      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
-      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
+
+      <h1>Mayor Gasto</h1>
+      <p>Tu mayor gasto durante este mes fue en Ropa</p>
+      <p>$700.00</p>
+
     </div>
   </template>
 
